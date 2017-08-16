@@ -1,0 +1,101 @@
+2 Dimensional Array
+
+	~ has rows and columns
+	Datatype ArrayName[row size][column size]
+	
+	Declare a 2D array
+		int A[2][3];
+			A[0][0] = 1;
+			A[0][1] = 2;
+			A[0][2] = 3;
+			A[1][0] = 4;
+			A[1][1] = 5;
+			A[1][2] = 6;
+			
+		cout << A[1][2]; // 6
+		
+	Initialize a 2D array
+	
+		int A[3][2] = {{4,7},{5,2},{1,3}};
+		int B[3][2] = {{1},{3,4},{5}};			  	
+		
+	Processing a 2D array
+		const int Rows = 3;
+		const int Cols = 3;
+			int A[Rows][Cols];
+			
+		For user input
+			
+			~ use to loops
+				outer for the rows
+				inner for the columns
+				
+				for(int r = 0, r < Rows; r++)
+					for(int c = 0;c < Cols; c++)
+						cin >> A[r][c];
+						
+				INPUT
+				4 5 6
+				2 7 8
+				1 9 3
+				
+		Output 2D array
+			for(int r = 0; r < Rows; r++)
+			{
+				for(int c = 0; c < Cols; c++)
+					cout << setw(3) << A[r][c];
+					cout << endl;		
+			}
+			
+		Summing all the elements in a 2D array
+		
+			int sum = 0;
+			for(int r = 0; r < Rows; r++)
+				for(int c = 0; c < Cols; c++)
+					sum = sum + A[r][c]
+		
+		Passing a 2D array to a function
+		
+			void addV(int);
+			void addA(int [optional][REQUIRED!],int,int);
+			
+			
+			int main()
+			{
+				int B[2][5] = {{1,2,3,4,5},{6,7,8,9,10}};
+				
+				
+				addV(B); // Error
+				addV(B[1][3]); // Pass 9  == 14
+				cout << B[1][3] << endl;
+				
+				addA(B,2,3);
+				
+			}
+			
+			void addV(int a)
+			{
+				a = a + 5;
+				cout << a;
+			}
+			
+			
+			void addA(int A[][5], int rowSize, int columnSize)
+			{
+				for(int r = 0; r < rowSize; r++)
+					for (int c = 0; c < columnSize; c++)
+						A[r][c] += 10;
+			
+			}
+			
+		Copy a 2D array
+			int A[2][3];
+			int B[2][3] = {{1,2,3},{4,5,6}};
+			
+			// Copy array B to A
+				A = B;
+				
+				for(int r = 0; r < 2; r++)
+					for(int c = 0; c < 3; c++)
+						A[r][c] = B[r][c];
+			

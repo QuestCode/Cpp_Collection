@@ -1,0 +1,181 @@
+Week 14 Chapter 10
+		
+	Characters,C-String, and the String Class
+		
+		
+		C-String
+			To create a string, use C-Strings or string class
+			
+			array or pointer
+			
+			Using Array
+				char stringName[] = "_____";
+				
+					ex: char last[10] = "Nguyen";
+					last |N|G|U|Y|E|N|_|_|_|
+					
+					ex: char last[] = "John Nguyen";
+			
+			Using Pointer
+				char *last = "Nguyen"; last |N|G|U|Y|E|N|_|
+				
+			
+			Input a C-String						v-- including the null character
+				cin.getline(C-String Variable, string size)  Default enter key to end input
+				
+				ex: char name[80]
+					cin.getline(name,80);
+												  v-- the terminating character
+				cin.getline(c-String array,SIZE,char = \n);   default: \n
+				
+				ex: char name[80];
+				
+					cin.getline(name,80,':');// abc:d name<-"abc"
+				
+				Output a C-String
+					Use a cout object
+					ex: char name[80] = "John Nguyen";
+						cout << name;
+					
+				C++ Library Function for working with C-Strings
+					library file  #include<cstring>
+					
+					strcpy(str1,str2) copy str2 onto str1
+					
+					char s4[10] = "John"
+					
+					char s4[10];
+						s4 = "John";// Error
+						
+					strcpy(s4,"John");
+					
+					strcat(s1,s2);// append s2 to s1
+						s1 + s2 
+						
+					ex: char first[10] = "John";
+						char last[10] = "Ng"
+						
+						strcat(name,first);
+						
+						_|_|_|_|_|_|_|_|_|_ + |J|o|h|n|\0| ->|J|o|h|n|\0|_|_|_|_|_|
+						name					first			name
+						
+						strcat(name,", ");
+						
+						|J|o|h|n|\0|_|_|_|_|_| + |,|_| -> |J|o|h|n|,|_|\0|_|_|_|
+						
+						strcat(name,last);
+						
+						|J|o|h|n|,|_|\0|_|_|_| + |N|g|\0| -> |J|o|h|n|,|_|N|g|\0|_|
+						
+					strlen(str) - return the length of the C-String
+						ex: char name[10] = "John Ng";
+						
+						cout << strlen(name);// 7
+						
+					strcmp(str1,str2)
+						compare character by character left to right
+						case-sensitive(A != a)
+						0 if str1 == str2
+						> 0 if str1 > str2
+						< 0 if str1 < str2
+						
+						if (strcmp(str1,str2))
+							cout << "A";
+						else
+							cout << "B";
+							
+				Character testing functions
+					Library header file #include<ctype>
+						Functions
+							int isDigit(char)
+							int isAlpha(char)
+							int isAlNum(char)
+							int isUpper(char)
+							int isLower(char)
+							int isSpace(char)
+							char toUpper(char)
+							
+						ex: input a C-string
+							count the number of digits in C-string
+							str<---"a12b0cd"
+							
+							
+							char str[10];
+							cin.getline(str,10); // str <--"a12b0cd"
+							int c = 0,count = 0;
+							
+							while(str[i] != '\0')
+							{
+								if(isDigit(str[i++]))
+									count++;
+							}
+							
+							for(i = 0; i <= strlen(str); i++)
+								if(isDigit(str[i++]))
+									count++
+						
+						Rewrite the example using the function
+							
+							int countDigit(char[]);
+							
+							int main()
+							{
+								char str[10];
+								cin.getline(str,10);
+								
+								cout << countDigit(str);	
+							}
+							
+							int countDigit(char str[])
+							{	
+								int count = 0;
+								for(i = 0; i <= strlen(str); i++)
+									if(isDigit(str[i++]))
+										count++;
+								
+								return count;
+							}
+							
+						Using a pointer
+							
+							int countDigit(char *);
+							
+							int main()
+							{
+								//same as above
+							}
+							
+							int countDigit(char *str)
+							{
+								int count = 0;
+								while(*str++ != '\0')
+									if(isDigit(*str))
+										 count++;
+								
+								return count;
+							}
+							
+				Create your own copy functions
+					
+					void myCopy(char[], char[]);
+					
+					int main()
+					{
+						char s1[10] = "apple"
+						char s2[10];
+							myCopy(s2,s1);
+						
+						cout << s2; // "apple"
+					}
+					
+					void myCopy(char a[],char a[])
+					{
+						int i = 0;
+						while(a[i] != '\0')
+						{
+							a[i] = b[i];
+							i++;
+						}
+						a[i] = '\0';
+					}

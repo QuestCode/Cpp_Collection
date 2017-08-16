@@ -1,0 +1,295 @@
+Week 8  Thurs 10/8
+
+Overloading functions
+	More than one function withe same name 
+	
+	void test();
+	void test(int);
+	void test(int, float);
+	int test(float, int);
+
+	int main()
+	{
+	
+		test(2,3.5);
+		test():
+		test(4);
+		test(3.5,2);
+		
+	}
+	
+	void test()
+	{
+	
+	}
+	
+	void test(int x);
+	{
+	
+	}
+	
+	void test(int x, float y)
+	{
+	
+	}
+	
+	int test(float x, int y)
+	{
+	
+	}
+	
+	
+Default argument function
+	
+	Default arguments are passed to the parameters automatically
+	if no argument one provided in the function call
+	
+	EX: void displayTotal(int = 10, int = 20, int = 30):
+		int main()
+		{
+			displayTotal();	//60
+			displayTotal(30); //80
+			displayTotal(5, ,7); //ERROR
+			displayTotal(5,2);	//37
+		}
+		
+		void displayTotal(int a, int b, int c)
+		{
+			cout << (a+b+c);
+		}
+
+Storage Class
+	
+	1. Local Variable
+		a) Define
+			Inside a function
+			Inside { }
+			EX: void test(int a)
+				{
+					int b;
+					
+					{
+						int c = 10:	
+					}
+				}
+		b) Initialization
+			No initialization -> assign to any number
+			EX:	int main()
+				{
+					int x;
+					cout << x;
+				}
+		c) Lifetime
+			A local variable exist only while the function is executing
+			EX: void test();
+				int main()
+				{
+					test();	//15
+					test();	//15
+				
+				}
+				
+				void test()
+				{
+					int x = 10;
+					x = x + 5;
+					cout << x << endl;
+				}
+		d) Visibility
+			The local variable is visible only in the function
+			the variable is declared
+			
+			
+			int main()
+			{
+				cout<< x;
+			
+			}
+			
+			void test()
+			{
+				int x = 10;
+				
+			}
+			
+			
+			EX: int main()
+				{
+				
+					{
+						int y = 10;
+					}
+					
+					cout << y; // ERROR
+					
+				}
+				
+Static local variable 
+	a) Definition same as local variable
+	
+	EX:	void test(int x)
+		{
+			static int y;
+			
+		}
+	
+	b) Initialization
+		NO initialization -> a zero will be assigned
+	
+		int main()
+		{
+			static int x; //x = 0
+		
+			static double y = 10.5;
+		} 
+	
+	c) Visibility
+		Same as local variable
+		
+		int main()
+		{
+			cout << z;	// ERROR
+		}
+		
+		void test()
+		{
+			static int z;
+		}
+	d) Lifetime
+		A static local variable exist until the main function is terminated 
+		A static local variable is initialized once
+		EX:
+			int main()
+			{
+				test(5); //5
+				test(2); //7
+				test(5); //12
+			}
+			
+			void test(int x)
+			{
+				static int y;
+				y = y + x;
+				
+				cout << y << endl;
+			}
+External Variable
+	a) Definition
+		define an external variable outside the functions
+	
+		int a; //Global
+		int main()
+		{
+		
+		}
+		
+		int b = 5; //Global
+		void test()
+		{
+			static int x = 5; //Static
+		}
+		
+		int c; //Global
+		void test1(int x)
+		{
+			int d = 5; // Local
+		}
+		
+	b) Initialization
+		No initialization -> 0
+		EX: int a
+			int main()
+			{
+			
+			}
+			
+			int b = 10;
+			void test()
+			{
+			
+			}
+			
+	c) Visibility
+		An external variable is visible to all the functions defined after the variable
+		
+		Ex1: 	int a = 10;
+				int main()
+				{
+					test1();
+					cout << a; //17
+				}
+		
+				int b; //0 
+				void test1()
+				{
+					a = a + b
+					test2(5)
+				}	
+		
+				int c = 2;
+				void test2(int x)
+				{
+					a = a + c + x;
+				}
+		Ex2:	int a;
+				int main()
+				{
+					extern c
+					
+					c = c + a;
+					
+					extern int c; // ERROR
+					extern int c = 10; //ERROR
+					extern c = 5; ERROR
+				}
+				
+				int b = 10;
+				void test1()
+				{
+				
+				}
+				
+				int c = 5;
+				void test2()
+				{
+				
+				}
+	d) Lifetime
+		An external variable exists until the main func is terminated
+
+Using a header file 
+
+	test.cpp
+	
+	include  <iostream>
+	using namespace std;
+	#include myhead.h
+	
+	void test1();
+	int test2(int);
+	void test3(float,int);
+
+	int main()
+	{
+	
+	
+	}
+	
+	void test1()
+	{
+	
+	
+	}
+	
+	int test2(int a)
+	{
+	
+	}
+	
+	void test3(float b, int c)
+	{
+	
+	}		
+	
+	Create a header file named myhead.h
+	
