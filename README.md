@@ -28,4 +28,9 @@
     * Labs 01-10
 
 * Other Materials
+    * Atm
+    * Date Format
+    * Person Class
+    * Superbowl Matchups   
+    * Superbowl Sorter
     * Images
